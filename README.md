@@ -1,10 +1,8 @@
-# Fit Bastard
+# DrinkMeUp
 
 ## Overview
 
-The different fitness app. Fit Bastard is here to help you loose weight, gain muscles or tone down. 
-It will give you a coach that pushes you beyond your levels. Fit Bastard has three prepared workout 
-plans that depend on your goals. 
+DrinkMeUp is an web based program that gives you cocktails options based on your preferences. Once you logged in, you will have your profile page, with the cocktails that you have made, the last 10 cocktails, and the questionary with 3 questions so it can recommend the cocktail that suits you best on the day.
 
 ## Technology used:
 
@@ -14,7 +12,7 @@ Languages:
 - CSS
 
 Frameworks
-- Djangowith
+- Django 
 - django-allauth
 
 Databases: 
@@ -31,35 +29,27 @@ Hosting:
 - Authenticication System
 	[Logout, Login, ChangePassword, ResetPassword, Signup, OAuth with Google]
 - Profile
-	[BMI, weight, height, progress, picture, completion posts, choose exercise, avatar]
-- Workouts
-	[Exercises: Loose, Muscles, ToneDown, Timer, Start, Pause, Give up, Resume, Finish, embedded Youtube videos] 
+	[Drinks made, Questionary, from the drinks made list you can click on the cocktail if you want to repete and drink it again straight away, also the your rating and comments will be visibel in the list, so you know]
+- Cocktails
+	[Cocktail option, button to get another option, button to indicate that you have made it, display with ingredients, instructions and cocktail image] 
+- Rating
+	[Once you finish and hit the button indication that you have made the cocktail a window will pop-up asking what was your experience with the cocktail, you will be able to rate it from Hate it to Love it and leave a message for your future self about that cocktail]
 	
 
 ## Expected Features
 
 - Online Shop
-- AI driven Feedback
-- Statistics
-- Migrate to Google Playstore
+- Phone App
+- AI driven 
+- Wine section
+
 
 ## Roles
 
-Product Owner (Ana)
-Lead Developer (Wisam)
-Head of Operation (Christian)
-
-## General Planning
-
-We are, and we can't stress this enough, a team!
-Don't be afraid to ask for help!
-We use github project:
+Product Owner (Pedro Pereira)
+Developer (Ana Pereira)
 
 
-[Project](https://github.com/users/wirrexx/projects/1/views/7)
-
-	
-Standups at 9.00am
 
 
 
