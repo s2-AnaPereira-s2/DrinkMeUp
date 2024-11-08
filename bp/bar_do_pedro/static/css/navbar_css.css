@@ -1,0 +1,67 @@
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 1rem;
+    position: fixed;
+    align-items: center;
+    padding: 20px;
+    margin-right: 10px;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    color: white;
+    background: transparent;
+
+}
+
+.navbar-left .main-logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-right {
+    align-content: center;
+    margin-right: 10px;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-item {
+    color: whitesmoke;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 15px;
+}
+
+#joinus-btn,
+#profile-btn {
+    background-color: #d19b4e;
+    border-radius: 18px;
+
+}
+
+#joinus-btn a,
+#profile-btn a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding-block: 4px;
+}
+
+.nav-item:hover {
+    color: #b3b3b3;
+}
+
+
+
+

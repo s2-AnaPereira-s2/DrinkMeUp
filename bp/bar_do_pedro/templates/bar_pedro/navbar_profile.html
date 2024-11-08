@@ -1,0 +1,36 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/navbar_css.css' %}">
+
+<div class="navbar">
+    <div class="navbar-left">
+        <a href="{% url 'welcome' %}" class="main-logo">DrinkMeUp</a>
+    </div>
+    <div class="navbar-right">
+        <div class="menu-icon" id="menu-icon"></div>
+        {% if user.is_authenticated %}
+        <div class="nav-menu" id="nav-menu">
+            <div id="profile-btn">
+                <a href="{% url 'menu' %}" class="nav-item">Cocktails List</a>
+            </div>
+            <div id="profile-btn">
+                <a href="{% url 'profile' %}" class="nav-item">MyBar</a>
+            </div>
+            <div id="profile-btn">
+                <a href="{% url 'logout' %}" class="nav-item">Log out</a>
+            </div>
+            <div id="profile-btn" style= "background: red">
+                <a href="{% url 'delete' %}" class="nav-item">Delete profile</a>
+            </div> 
+        </div>
+        {% else %}
+        <div class="nav-menu" id="nav-menu">
+            <div id="signin-btn">
+                <a href="{% url 'login' %}" class="nav-item">Sign in</a>
+            </div>
+            <div id="joinus-btn">
+                <a href="{% url 'signup' %}" class="nav-item">Join us</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>

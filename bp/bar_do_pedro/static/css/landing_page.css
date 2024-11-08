@@ -1,0 +1,78 @@
+/* Reset some default margins and paddings */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+  
+/* Set fluid layout base */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Example breakpoint for tablets */
+@media (min-width: 768px) {
+    /* Styles for medium devices */
+  }
+  
+  /* Example breakpoint for desktops */
+  @media (min-width: 1024px) {
+    /* Styles for larger screens */
+  }
+
+body {
+    background-image: linear-gradient(rgb(17, 18, 18), rgba(162, 155, 8, 0.5));
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.h1 {
+    display: flex;
+    font-size: 5vw;
+    color: whitesmoke;
+    font-weight: 700;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    margin-top: 40vh;
+}
+
+.h1 p {
+
+    width: 320px;
+    font-size: 1rem;
+    padding-left: .5rem;
+    
+}
+
+.join-us-btn {
+    color: whitesmoke;
+    background: #d19b4e;
+    padding: 10px;
+    border: none;
+    border-radius: 16px;
+    text-align: center;
+    font-size: .8rem;
+    width: 128px;
+    cursor: pointer;
+    transition: all .55s ease;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.join-us-btn:hover {
+    background: limegreen;
+    color: #292929;
+    transform: translateX(4px)
+}

@@ -1,0 +1,78 @@
+{% extends 'bar_pedro/base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+
+<div class="content">
+    <div class="greetings">
+        <div class="hello">
+            <h1>Hello</h1>
+            <h1 style="text-transform: capitalize; margin-left: 10px;">{{user.username}}</h1>
+        </div>
+        <h3 class="message" >{{ motivational_msg }} </h3>
+    </div>
+    <div class="row">
+        <div class="leftcolumn">   
+            <div class="mycocktails">
+                <h3 style="text-align: left; margin-bottom: 10px;">My cocktails</h3>
+                <hr>
+                <div class="details">
+                    {% for x in drinks %}
+                        <p>{{x}}</p>
+                    {% endfor %}
+                    <div class="height">
+                    </div>
+                </div>
+            </div>   
+        </div>
+        <div class="rightcolumn">
+            <div class="order" >
+                <h3 style="text-align: left; margin-bottom: 10px;" >Order here</h3>
+                <hr>
+                <div class="tasteform">
+                    <form action="" method="post" class="tasteform">
+                        {% csrf_token %}
+                        <label for="taste"> <h3>Taste:</h3> </label>
+                            <select name="taste" id="taste">
+                                <option value="">Select one</option>
+                                <option value="Sweet">Sweet</option>
+                                <option value="Citrus">Citrus</option>
+                                <option value="Bitter">Bitter</option>
+                                <option value="Fruity">Fruity</option>
+                                <option value="Fresh">Fresh</option>
+                                <option value="Sour">Sour</option>
+                                <option value="Smoky">Smoky</option>
+                                <option value="Savory">Savory</option>
+                            </select>
+                        <br><br>
+                        <label for="spirit"> <h3>Spirits:</h3></label><br>
+                            <label><input name="spirit" value="Vodka" id="spirit" type="checkbox" class="inline"/>Vodka</label><br>
+                            <label><input name="spirit" value="Gin" id="spirit" type="checkbox" class="inline"/>Gin</label><br>
+                            <label><input name="spirit" value="Whisky" id="spirit" type="checkbox" class="inline"/>Whisky</label><br>
+                            <label><input name="spirit" value="Tequila" id="spirit" type="checkbox" class="inline"/>Tequila</label><br>
+                            <label><input name="spirit" value="Tequila" id="spirit" type="checkbox" class="inline"/>Cachaca</label><br>
+                            <label><input name="spirit" value="Tequila" id="spirit" type="checkbox" class="inline"/>Bourbon</label><br>
+                            <label><input name="spirit" value="Tequila" id="spirit" type="checkbox" class="inline"/>Rum</label><br>
+                            <label><input name="spirit" value="Tequila" id="spirit" type="checkbox" class="inline"/>Cognac</label><br>
+                            <label><input name="spirit" value="Tequila" id="spirit" type="checkbox" class="inline"/>Aperol</label><br>
+                        <br><br>
+                        <label for="strength"> <h3>Boozy:</h3></label>
+                            <select name="strength" id="strength">
+                                <option value="">Select one</option>
+                                <option value="Strong">Strong</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Light">Light</option>
+                            </select>
+                        <br><br>
+                        <button class="dmu_button"  type="submit">Drink me up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

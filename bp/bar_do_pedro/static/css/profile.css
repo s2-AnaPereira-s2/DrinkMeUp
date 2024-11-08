@@ -1,0 +1,156 @@
+/* Reset some default margins and paddings */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+  
+/* Set fluid layout base */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Example breakpoint for tablets */
+@media (min-width: 768px) {
+    /* Styles for medium devices */
+  }
+  
+  /* Example breakpoint for desktops */
+  @media (min-width: 1024px) {
+    /* Styles for larger screens */
+  }
+
+body {
+    background-image: linear-gradient(rgb(17, 18, 18), rgba(162, 155, 8, 0.5));
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.greetings {
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-top: 80px;
+    width: fit-content;
+    padding: 10px;
+    
+}
+
+.hello {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 20px;
+    flex-wrap: nowrap;
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.leftcolumn {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 300px;
+    height: 450px;
+    background-color: whitesmoke;
+    border-color: #cccccc00;
+    border-radius: 16px;
+    box-shadow: 0px 5px 12px #292929;
+    margin-right: 10px;
+    align-items: center;
+    padding: 20px;
+    
+}
+
+
+.rightcolumn {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 500px;
+    height: 450px;
+    background-color: whitesmoke;
+    border-color: #cccccc00;
+    box-shadow: 0px 5px 12px #292929;
+    border-radius: 10px;
+    margin-right: 10px;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.order {
+    width: 450px;
+}
+
+footer {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: whitesmoke;
+    height: 60px;
+    width: 100%;
+    bottom: 0;
+}
+
+.copyright {
+    display: flex;
+    justify-content: space-evenly;
+    color: black;
+    text-decoration: none;
+    gap: 2rem;
+    padding: 8px;
+    z-index: 1002;
+}
+
+.copyright a {
+    color: black;
+}
+
+button {
+    font-size: 16px;
+    width: fit-content;
+    background-color: #d19b4e;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

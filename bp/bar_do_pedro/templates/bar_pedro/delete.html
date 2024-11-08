@@ -1,0 +1,29 @@
+{% extends 'bar_pedro/base.html' %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<title>Delete</title>
+
+{% block content %}
+<div class="login-main">
+    <div class="quote-text">
+      <h2>DELETE<br>CONFIRMATION</h2>
+    </div>
+    <div class="login-menu" id="login-menu">
+        <div class="login-box">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <h2 style="text-align: center;">User: {{ member }}</h2>
+                </div>
+                <div class="login-btn">
+                    <a href="{% url 'profile' %}"><button type="button" class="back_profile">Back to Order</button></a>
+                </div>
+                <div class="delete-btn" style="text-align: center; margin-top: 10px;">
+                    <button type="submit" class="delete">DELETE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'bar_pedro/base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/landing_page.css' %}">
+{% endblock %}
+
+{% block title %}DrinkMeUp{% endblock %}
+{% block content %}
+
+<div class="landing-container">
+    <div class="h1">
+        <h1>DrinkMeUp</h1>
+        <p class="about-text">Make YOUR perfect drink!!!</p>
+        {% if not user.is_authenticated %}
+            <a href="{% url 'signup' %}" class="join-us-btn"> Join us </a>
+        {% endif %} 
+    </div>
+</div>
+</div>
+
+{% endblock%}
