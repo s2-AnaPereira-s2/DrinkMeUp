@@ -111,7 +111,7 @@ def delete_user_func(request):
 
 @login_required
 def profile_view(request):
-    """here the user information is displayed in the profile page and user is able to answer some questions so it can suggest 3 cocktails"""
+    """here the user information is displayed in the profile page and user is able to answer some questions so it can suggest cocktails"""
     
     user = request.user
     user_profile = UserProfile.objects.get(user=user)
