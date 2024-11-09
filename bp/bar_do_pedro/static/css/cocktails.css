@@ -78,3 +78,33 @@ button {
     margin-right: auto;
     justify-content: center;
 }
+
+.info{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+}
+
+.details{
+    margin-left: 10px;
+
+}
+
+.tasteform{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.DMU{
+    margin-right: 5px;
+    border-radius: 30px;
+}
+
+.done {
+    margin-left: 5px;
+    border-radius: 30px;
+}

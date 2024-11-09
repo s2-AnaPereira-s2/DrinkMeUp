@@ -21,7 +21,7 @@ class Drinks(models.Model):
     boozy = models.CharField(max_length=50, default="Boozy")
     ingredients = models.TextField(default="Ingredients")
     instructions = models.TextField(default="Instructions")
-    image = models.ImageField(null=True, blank=True, upload_to="static/")
+    image = models.ImageField(null=True, blank=True, upload_to="media/cocktails/")
     
 class DrinksMade(models.Model):
     user = models.CharField(max_length=50)

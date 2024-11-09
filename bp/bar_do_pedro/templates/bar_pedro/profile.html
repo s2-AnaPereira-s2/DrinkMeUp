@@ -21,12 +21,13 @@
                 <hr>
                 <div class="details">
                     {% for x in drinks %}
-                        <p>{{x}}</p>
-                    {% endfor %}
-                    <div class="height">
+                    <div class="cocktail-row">
+                        <div class="cocktail-name">{{ x.cocktail }}</div>
+                        <div class="cocktail-rate">{{ x.rate }}</div>
                     </div>
+                    {% endfor %}
                 </div>
-            </div>   
+            </div>
         </div>
         <div class="rightcolumn">
             <div class="order" >

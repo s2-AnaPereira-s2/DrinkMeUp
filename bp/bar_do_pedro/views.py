@@ -116,13 +116,13 @@ def profile_view(request):
     user = request.user
     user_profile = UserProfile.objects.get(user=user)
     latest_post =  user_profile.latest_post
-    user_drinks = DrinksMade.objects.filter(user=user.username).values()
-    cocktails_made = list(user_drinks.values_list('cocktail', 'rate', 'comment'))
+    user_drinks = DrinksMade.objects.filter(user=user.username).order_by('-id')[:5]
+
     
     context = {
         'member': user_profile,
         'motivational_msg': latest_post,
-        'drinks': cocktails_made,
+        'drinks': user_drinks,
     }
     
     if request.method == 'POST':
@@ -152,9 +152,17 @@ def cocktails(request):
     taste = user_profile.taste
     spirits = user_profile.spirits
     
+    #match the drinks based on preferences
+    
     match1 = Drinks.objects.filter(boozy=boozy, taste=taste)
     match2 = match1.filter(spirits__icontains=spirits).values()
-    cocktail_suggestion = random.choice(list(match2))
+    
+    # Check if a cocktail suggestion is already stored in the session
+    if 'selected_cocktail' in request.session:
+        cocktail_suggestion = request.session['selected_cocktail']
+    else:
+        cocktail_suggestion = random.choice(list(match2))
+        request.session['selected_cocktail'] = cocktail_suggestion  # Store in session
     
     context = {
         'member': user_profile,
@@ -165,23 +173,28 @@ def cocktails(request):
     if request.method == 'POST':
         action = request.POST.get('action')
         
+        #if the user is not satisfied with the suggestion, click and new random cocktail will be shown
         if action == "DMU":
         
             cocktail_suggestion = random.choice(list(match2))
-            context = {
-            'member': user_profile,
-            'motivational_msg': latest_post,
-            'cocktails': cocktail_suggestion,
-            }
+            request.session['selected_cocktail'] = cocktail_suggestion
+            context['cocktails'] = cocktail_suggestion
             
         if action == "YES":
             username = user.username
-            cocktail = cocktail_suggestion["cocktail"]
+            # Retrieve the cocktail from the session to ensure consistency
+            cocktail = request.session.get('selected_cocktail').get("cocktail")
             rate = request.POST.get('rate')
             comment = request.POST.get('comment')
-            user_cocktail = DrinksMade.objects.create(user=username, cocktail=cocktail, rate=rate, comment=comment)
+            DrinksMade.objects.create(user=username, cocktail=cocktail, rate=rate, comment=comment)
+            
+            # Update latest post with a random message
             user_profile.latest_post = random.choice(get_file_content_as_list(RESPONSE_FILE))
             user_profile.save()
+            
+            # Clear the selected cocktail from the session after saving
+            del request.session['selected_cocktail']
+            
             return redirect("profile")       
         
         return render(request, 'bar_pedro/cocktails.html', context)
@@ -189,14 +202,16 @@ def cocktails(request):
     return render(request, 'bar_pedro/cocktails.html', context)
 
 
-
 def menu(request):
     """Display the list of all cocktails"""
-    cocktails_list = Drinks.objects.values_list('cocktail')
+    cocktails_list = Drinks.objects.all()
     context = { "menu": cocktails_list,
     }
     return render(request, "bar_pedro/menu.html", context)
 
+def cocktail_info(request):
+    "display all the specific cocktail information, clicked on the cocktails list page or my cocktails list"
+    
 
 class LandingPage(TemplateView):
     template_name = "bar_pedro/landing_page.html"
