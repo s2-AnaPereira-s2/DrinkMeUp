@@ -12,14 +12,13 @@
         {% endblock %}
     </head>
     <body>
-        <header class="navbar">
+        <header>
             {% include 'bar_pedro/navbar_profile.html' %}
         </header>
-        <div class="container" >
-            <main>
-                {% block content %}
-                {% endblock %}
-            </main>
-        </div>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+
     </body>
 </html>

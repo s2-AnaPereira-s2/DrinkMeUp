@@ -35,6 +35,7 @@ urlpatterns = [
     path("profile/", views.profile_view, name="profile"),
     path('cocktails/', views.cocktails, name='cocktails'),
     path('menu/', views.menu, name='menu'),
+    path('details/<int:id>/', views.cocktail_info, name='details'),
     path('delete/', views.delete_user_func, name='delete'),
     path("imprint.html", ImprintView.as_view(), name="imprint"),
     path("privacy-policy.html", PrivacyPolicyView.as_view(), name="privacy_policy"),

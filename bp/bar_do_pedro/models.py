@@ -16,7 +16,7 @@ class UserProfile(models.Model):
 
 class Drinks(models.Model):
     cocktail = models.CharField(max_length=50, default="Cocktail")
-    spirits = models.CharField(max_length=100, default="Spirits")
+    spirits = models.CharField(max_length=100, default="Spirit")
     taste = models.CharField(max_length=50, default="Taste")
     boozy = models.CharField(max_length=50, default="Boozy")
     ingredients = models.TextField(default="Ingredients")
@@ -25,6 +25,7 @@ class Drinks(models.Model):
     
 class DrinksMade(models.Model):
     user = models.CharField(max_length=50)
-    cocktail = models.CharField(max_length=50, default="Cocktail")
+    drink = models.ForeignKey(Drinks, on_delete=models.CASCADE, related_name='made_drinks')
+    cocktail = models.CharField(max_length=50, null=True)
     rate = models.CharField(max_length=50, blank=True)
     comment = models.TextField(blank=True)

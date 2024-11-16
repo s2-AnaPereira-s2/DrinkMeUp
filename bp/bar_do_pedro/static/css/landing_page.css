@@ -22,7 +22,7 @@ html, body {
   }
 
 body {
-    background-image: linear-gradient(rgb(17, 18, 18), rgba(162, 155, 8, 0.5));
+    background-color: rgb(27, 26, 26);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -30,31 +30,57 @@ body {
     height: 100vh;
 }
 
-.container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+
+.landing-container {
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    margin-left: 100px;
+    margin-top: 300px;
+    background: rgb(27, 26, 26);
+
 }
 
 .h1 {
+
     display: flex;
-    font-size: 5vw;
+    position: absolute;
+    content: "";
+    bottom: -50%;
+    left: -50%;
+    height: 400vh;
+    width: 200%;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 30%;
+    animation: spin 8s linear 1;
+    animation-fill-mode: forwards;
+     
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100%) rotate(360deg);
+  }
+}
+
+.landing-container p {
+    font-size: 30px;
+    text-align: start;
+    align-self: flex-start;
+}
+
+.landing-container h1 {
+    font-size: 10vw;
     color: whitesmoke;
     font-weight: 700;
-    flex-direction: column;
-    align-items: flex-start;
-    align-content: center;
-    flex-wrap: wrap;
-    margin-top: 40vh;
-}
-
-.h1 p {
-
-    width: 320px;
-    font-size: 1rem;
-    padding-left: .5rem;
+    align-self: flex-start;
     
 }
+
 
 .join-us-btn {
     color: whitesmoke;
@@ -62,9 +88,9 @@ body {
     padding: 10px;
     border: none;
     border-radius: 16px;
-    text-align: center;
-    font-size: .8rem;
-    width: 128px;
+    align-self: flex-start;
+    font-size: 15px;
+    width: fit-content;
     cursor: pointer;
     transition: all .55s ease;
     text-decoration: none;

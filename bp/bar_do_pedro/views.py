@@ -117,13 +117,17 @@ def profile_view(request):
     user_profile = UserProfile.objects.get(user=user)
     latest_post =  user_profile.latest_post
     user_drinks = DrinksMade.objects.filter(user=user.username).order_by('-id')[:5]
-
-    
+        
     context = {
         'member': user_profile,
         'motivational_msg': latest_post,
+        
+        
         'drinks': user_drinks,
+        
     }
+    
+    print()
     
     if request.method == 'POST':
 
@@ -151,11 +155,14 @@ def cocktails(request):
     boozy = user_profile.boozy
     taste = user_profile.taste
     spirits = user_profile.spirits
-    
+    spirits_list = [spirit.strip() for spirit in spirits.split(',')]
+    spirits_pattern = "|".join(spirits_list)
+   
     #match the drinks based on preferences
     
     match1 = Drinks.objects.filter(boozy=boozy, taste=taste)
-    match2 = match1.filter(spirits__icontains=spirits).values()
+    match2 = match1.filter(spirits__regex=rf'\b({spirits_pattern})\b').values()
+    print(match2)
     
     # Check if a cocktail suggestion is already stored in the session
     if 'selected_cocktail' in request.session:
@@ -184,9 +191,11 @@ def cocktails(request):
             username = user.username
             # Retrieve the cocktail from the session to ensure consistency
             cocktail = request.session.get('selected_cocktail').get("cocktail")
+            drink = Drinks.objects.get(cocktail=cocktail)
             rate = request.POST.get('rate')
             comment = request.POST.get('comment')
-            DrinksMade.objects.create(user=username, cocktail=cocktail, rate=rate, comment=comment)
+        
+            DrinksMade.objects.create(user=username, cocktail=cocktail, rate=rate, comment=comment, drink=drink)
             
             # Update latest post with a random message
             user_profile.latest_post = random.choice(get_file_content_as_list(RESPONSE_FILE))
@@ -201,7 +210,7 @@ def cocktails(request):
 
     return render(request, 'bar_pedro/cocktails.html', context)
 
-
+@login_required
 def menu(request):
     """Display the list of all cocktails"""
     cocktails_list = Drinks.objects.all()
@@ -209,9 +218,15 @@ def menu(request):
     }
     return render(request, "bar_pedro/menu.html", context)
 
-def cocktail_info(request):
+@login_required
+def cocktail_info(request, id):
     "display all the specific cocktail information, clicked on the cocktails list page or my cocktails list"
+    cocktail = Drinks.objects.get(id=id)
+    context = {
+        'cocktail': cocktail
+    }
     
+    return render(request, "bar_pedro/cocktail_info.html", context)
 
 class LandingPage(TemplateView):
     template_name = "bar_pedro/landing_page.html"

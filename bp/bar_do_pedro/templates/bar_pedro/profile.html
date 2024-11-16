@@ -22,7 +22,7 @@
                 <div class="details">
                     {% for x in drinks %}
                     <div class="cocktail-row">
-                        <div class="cocktail-name">{{ x.cocktail }}</div>
+                        <div class="cocktail-name"><a href="{% url 'details' x.drink.pk %}">{{ x.cocktail }}</a></div>
                         <div class="cocktail-rate">{{ x.rate }}</div>
                     </div>
                     {% endfor %}
@@ -36,6 +36,7 @@
                 <div class="tasteform">
                     <form action="" method="post" class="tasteform">
                         {% csrf_token %}
+                        <fieldset>
                         <label for="taste"> <h3>Taste:</h3> </label>
                             <select name="taste" id="taste">
                                 <option value="">Select one</option>
@@ -48,7 +49,9 @@
                                 <option value="Smoky">Smoky</option>
                                 <option value="Savory">Savory</option>
                             </select>
+                        </fieldset>
                         <br><br>
+                        <fieldset>
                         <label for="spirit"> <h3>Spirits:</h3></label><br>
                             <label><input name="spirit" value="Vodka" id="spirit" type="checkbox" class="inline"/>Vodka</label><br>
                             <label><input name="spirit" value="Gin" id="spirit" type="checkbox" class="inline"/>Gin</label><br>
@@ -59,7 +62,9 @@
                             <label><input name="spirit" value="Tequila" id="spirit" type="checkbox" class="inline"/>Rum</label><br>
                             <label><input name="spirit" value="Tequila" id="spirit" type="checkbox" class="inline"/>Cognac</label><br>
                             <label><input name="spirit" value="Tequila" id="spirit" type="checkbox" class="inline"/>Aperol</label><br>
+                        </fieldset>
                         <br><br>
+                        <fieldset>
                         <label for="strength"> <h3>Boozy:</h3></label>
                             <select name="strength" id="strength">
                                 <option value="">Select one</option>
@@ -67,7 +72,9 @@
                                 <option value="Medium">Medium</option>
                                 <option value="Light">Light</option>
                             </select>
+                        </fieldset>
                         <br><br>
+                        
                         <button class="dmu_button"  type="submit">Drink me up</button>
                     </form>
                 </div>
