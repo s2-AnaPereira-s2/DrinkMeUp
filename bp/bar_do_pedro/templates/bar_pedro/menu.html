@@ -7,16 +7,16 @@
 {% block content %}
 
 
-<div style="display:block; margin-top:100px; margin-left: 10px">
-    <div>
-        <h1>Cocktails List</h1>
-    </div>  
+<div style="display:block; margin-top:100px; margin-left: 10px"> 
     <div class="details" >
-        {% for x in menu %}
-            <ul>
-                <a href="{% url 'details' x.id %}" class="list"><li>{{x.cocktail}}</li></a>
-            </ul>
-        {% endfor %}
+        <h1>Cocktails List</h1>
+        <div class="list">
+            {% for x in menu %}
+                <ul>
+                    <a href="{% url 'details' x.id %}" class="alist"><li>{{x.cocktail}}</li></a>
+                </ul>
+            {% endfor %}
+        </div>
     </div>
 </div>
 

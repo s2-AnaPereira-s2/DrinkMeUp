@@ -1,7 +1,9 @@
 {% extends 'bar_pedro/base.html' %}
 {% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
 
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
 <title>Delete</title>
 
 {% block content %}
@@ -17,7 +19,7 @@
                     <h2 style="text-align: center;">User: {{ member }}</h2>
                 </div>
                 <div class="login-btn">
-                    <a href="{% url 'profile' %}"><button type="button" class="back_profile">Back to Order</button></a>
+                    <a href="{% url 'profile' %}"><button type="button" class="back_profile">Back to Bar</button></a>
                 </div>
                 <div class="delete-btn" style="text-align: center; margin-top: 10px;">
                     <button type="submit" class="delete">DELETE</button>

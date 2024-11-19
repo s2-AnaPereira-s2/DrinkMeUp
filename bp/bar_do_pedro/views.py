@@ -116,33 +116,24 @@ def profile_view(request):
     user = request.user
     user_profile = UserProfile.objects.get(user=user)
     latest_post =  user_profile.latest_post
-    user_drinks = DrinksMade.objects.filter(user=user.username).order_by('-id')[:5]
+    user_drinks = DrinksMade.objects.filter(user=user.username).order_by('-id')[:10]
         
     context = {
         'member': user_profile,
         'motivational_msg': latest_post,
-        
-        
-        'drinks': user_drinks,
-        
+        'drinks': user_drinks,    
     }
     
-    print()
-    
     if request.method == 'POST':
-
         user_profile.boozy = request.POST.get('strength')
         user_profile.taste = request.POST.get('taste')
-        
          # Get the list of selected spirits and join them into a single string
         selected_spirits = request.POST.getlist('spirit')
         user_profile.spirits = ', '.join(selected_spirits)  # This saves the spirits as a comma-separated string
         
         # Save the data correctly
         user_profile.save()
-        
         return redirect('cocktails')
-    
    
     return render(request, 'bar_pedro/profile.html', context)
 
@@ -162,20 +153,24 @@ def cocktails(request):
     
     match1 = Drinks.objects.filter(boozy=boozy, taste=taste)
     match2 = match1.filter(spirits__regex=rf'\b({spirits_pattern})\b').values()
-    print(match2)
+
+    try:
+        # Check if a cocktail suggestion is already stored in the session
+        if 'selected_cocktail' in request.session:
+            cocktail_suggestion = request.session['selected_cocktail']
+        else:
+            cocktail_suggestion = random.choice(list(match2))
+            request.session['selected_cocktail'] = cocktail_suggestion  # Store in session
+
+        context = {
+            'member': user_profile,
+            'motivational_msg': latest_post,
+            'cocktails': cocktail_suggestion,     
+        }
     
-    # Check if a cocktail suggestion is already stored in the session
-    if 'selected_cocktail' in request.session:
-        cocktail_suggestion = request.session['selected_cocktail']
-    else:
-        cocktail_suggestion = random.choice(list(match2))
-        request.session['selected_cocktail'] = cocktail_suggestion  # Store in session
-    
-    context = {
-        'member': user_profile,
-        'motivational_msg': latest_post,
-        'cocktails': cocktail_suggestion,     
-    }
+    except IndexError:
+        request.session['message'] = "Unfortunately there is no cocktail match!!! Please try again =)"
+        return redirect("profile")
     
     if request.method == 'POST':
         action = request.POST.get('action')

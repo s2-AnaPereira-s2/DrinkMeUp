@@ -26,8 +26,9 @@ html, body {
 
 
 body {
-    background-color: rgb(27, 26, 26);
+    background-image: url("Background.png");
     background-size: cover;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     margin: 0;
     height: 100vh;
@@ -60,22 +61,38 @@ body p {
     align-content: center;
 }
 
-.google-lgn {
-    border-radius: 16px;
-    text-align: center;
-    font-size: .8rem;
-    margin-left: .5rem;
-    width: 128px;
-    margin-top: 1rem;
-    background: black;
+.google_btn{
+    display: flex;
+    justify-content: center;
     align-items: center;
-    align-content: center;
+}
 
+.loginpage-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+a.agoogle-lgn {
+    display: flex;
+    text-decoration: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    background-color: #d19b4e;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 5px;
 }
 
 .google-icon {
-    width: 12px;
-    height: 12px;
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
 }
 
 .join-us-btn {
@@ -186,7 +203,6 @@ div.google-login-btn button {
 
 button {
     font-size: 16px;
-    width: 50%;
     background-color: #d19b4e;
     color: white;
     padding: 10px;
@@ -230,6 +246,16 @@ button {
     cursor: pointer;
 }
 
+.delete {
+    font-size: 16px;
+    background-color: #fc0404ec;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: auto;
+}
 
 
 

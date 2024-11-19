@@ -22,11 +22,16 @@ html, body {
   }
 
 body {
-    background-color: rgb(27, 26, 26);
+    background-image: url("Background.png");
     background-size: cover;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     margin: 0;
     height: 100vh;
+}
+
+h2 {
+    font-family: 'Brush Script MT', cursive;
 }
 
 .greetings {
@@ -54,7 +59,7 @@ body {
     align-items: flex-start;
     margin-top: 20px;
     flex-wrap: nowrap;
-    color: black;
+    color: whitesmoke;
     margin-left: auto;
     margin-right: auto;
     justify-content: space-between;
@@ -64,12 +69,8 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    width: 300px;
-    height: 450px;
-    background-color: whitesmoke;
-    border-color: #cccccc00;
-    border-radius: 16px;
-    box-shadow: 0px 5px 12px #292929;
+    width: 400px;
+    height: 500px;
     margin-left: 50px;
     align-items: center;
     padding: 20px;
@@ -77,35 +78,31 @@ body {
     
 }
 
-
-
 .details {
     display: flex;
     flex-direction: column;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-top: 10px;
-    text-decoration: none;
+    margin-top: 50px;
 }
 
 
 .cocktail-row {
     display: flex;
     border-bottom: 1px solid #ddd;
-    text-decoration: none;
+    
 }
 
 .cocktail-row:last-child {
     border-bottom: none;
+    
 }
 
 .cocktail-name,
 .cocktail-rate {
-    width: 50%;
     padding: 8px;
     text-align: center;
     border-right: 1px solid #ddd;
-    text-decoration: none;
 }
 
 .cocktail-rate {
@@ -117,12 +114,8 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    width: 700px;
-    height: 450px;
-    background-color: whitesmoke;
-    border-color: #cccccc00;
-    box-shadow: 0px 5px 12px #292929;
-    border-radius: 10px;
+    width: 400px;
+    height: 500px;
     margin-right: auto;
     margin-left: auto;
     align-items: center;
@@ -131,7 +124,71 @@ body {
 }
 
 .order {
-    width: 450px;
+    width: 320px;
+    margin-top: 50px;
+}
+
+.error-message {
+    display: flex;
+    overflow: hidden; /* Prevent content overflow during height transition */
+    animation: fade 2s ease forwards;
+    animation-delay: 10s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        height: auto;
+    }
+
+    50% {
+        opacity: 0;
+        transform: translateY(-20px); /* Optional: Slide up */
+        height: auto;
+    } 
+
+    100% {
+        opacity: 0;
+        height: 0;
+    } 
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
+
+}
+
+fieldset {
+    border: none;
+    padding: 2px;
+    margin-top: 2px;
+}
+
+h3 {
+    margin-right: 5px;
+}
+
+.taste {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.spirits {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.boozy{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 
